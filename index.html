@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onupirat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-transform: uppercase;
+            font-size: 40px;
+            letter-spacing: 1px;
+            overflow: hidden;
+            background-color: rgb(15, 15, 15);
+            background-image: radial-gradient(circle 850px at 30% -30%, #423375, rgb(6, 6, 6));
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Main content container */
+        .main-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .main-content .site-logo {
+            width: 100% !important;
+            height: auto;
+            margin-bottom: 10px;
+            animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 20px rgba(66, 51, 117, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .main-content .site-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(66, 51, 117, 0.6));
+        }
+
+        /* Logo animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 20px rgba(66, 51, 117, 0.3)); }
+            50% { filter: drop-shadow(0 0 25px rgba(72, 36, 144, 0.5)); }
+            100% { filter: drop-shadow(0 0 30px rgba(66, 51, 117, 0.7)); }
+        }
+
+        /* Button styles */
+        .action-buttons {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            width: auto;
+            padding: 0 15px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.1s;
+            box-shadow: 0 0 2px #244f90, 0 0 5px #244f90;
+        }
+
+        .action-button:hover {
+            background-color: rgba(240, 240, 240, 0.119);
+            box-shadow: 0 0 15px #482490, 0 0 20px #244f90;
+        }
+
+        .action-button img {
+            max-height: 50%;
+            width: auto;
+            margin: auto;
+        }
+
+        .text-button {
+            color: #b6b6b6;
+            font: 17px 'Secular One', sans-serif;
+        }
+
+        /* Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Notification */
+        .clipboard-notification {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 185, 37, 0.8);
+            color: rgb(0, 0, 0);
+            padding: 5px 10px;
+            border-radius: 20px;
+            z-index: 1000;
+            transition: opacity 0.5s;
+            display: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(15, 15, 15);
+            border: 2px solid #244f90;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #482490;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+
+        .close-button {
+            color: #b6b6b6;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover {
+            color: white;
+        }
+
+        .speedtest-container {
+            width: 500px;
+            height: 550px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <img src="logo.svg" alt="Logo" class="site-logo">
+    </div>
+
+    <div class="action-buttons">
+        <a href="https://mega.nz/folder/ooFzBKha#VKr9Kdu_s9kMADI6UtB1TA" class="action-button">
+            <img src="mega-logo.png" alt="Mega.nz Logo" />
+        </a>
+        <a href="#" class="action-button text-button" id="masButton">MAS</a>
+        <a href="#" class="action-button text-button" id="chrisButton">Chris</a>
+        <a href="#" class="action-button text-button" id="malwareButton">NOTMALWARE</a>
+        <a href="#" class="action-button text-button" id="win11Button">Win11Debloat</a>
+        <a href="#" class="action-button text-button" id="speedtestButton">SPEEDTEST</a>
+    </div>
+
+    <div id="notification" class="clipboard-notification">Text copied</div>
+
+    <!-- Speedtest Modal -->
+    <div id="speedtestModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" id="closeSpeedtest" style="position:absolute;top:0px;right:0px;z-index:10;">&times;</button>
+            <div class="speedtest-container">
+                <iframe src="about:blank" data-src="https://fast.com" width="500px" height="550px" frameborder="0" scrolling="no" style="border:none;border-radius:10px;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define the copy commands
+        const copyCommands = {
+            mas: 'irm https://get.activated.win | iex',
+            chris: 'iwr -useb https://christitus.com/win | iex',
+            malware: 'powershell -command "irm https://raw.githubusercontent.com/ImMALWARE/MalwTool/main/MalwTool.ps1 | iex"',
+            win11: 'irm https://raw.githubusercontent.com/Raphire/Win11Debloat/refs/heads/master/Get.ps1 | iex'
+        };
+
+        // Function to copy text and show notification
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => showNotification())
+                .catch(error => console.error('Error copying text: ', error));
+        }
+
+        // Function to show notification
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            notification.style.opacity = '1';
+
+            // Hide notification after 2 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500);
+            }, 2000);
+        }
+
+        // Add event listeners to buttons
+        document.getElementById('masButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            copyToClipboard(copyCommands.mas);
+        });
+
+        document.getElementById('chrisButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            copyToClipboard(copyCommands.chris);
+        });
+
+        document.getElementById('malwareButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            copyToClipboard(copyCommands.malware);
+        });
+
+        document.getElementById('win11Button').addEventListener('click', function(event) {
+            event.preventDefault();
+            copyToClipboard(copyCommands.win11);
+        });
+
+        // Speedtest modal functionality
+        const speedtestModal = document.getElementById('speedtestModal');
+        const speedtestButton = document.getElementById('speedtestButton');
+        const closeSpeedtest = document.getElementById('closeSpeedtest');
+
+        speedtestButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            const iframe = document.querySelector('#speedtestModal iframe');
+            iframe.src = iframe.getAttribute('data-src');
+            speedtestModal.style.display = 'block';
+        });
+
+        closeSpeedtest.addEventListener('click', function() {
+            speedtestModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === speedtestModal) {
+                speedtestModal.style.display = 'none';
+            }
+        });
+
+        // Prevent iframe from opening new windows
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.closest('iframe')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+    </script>
+</body>
+</html>
