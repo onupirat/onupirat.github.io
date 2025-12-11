@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>onupirat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
     <style>
         /* Base styles */
         html, body {
@@ -72,10 +72,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 120px;
+            min-width: 96px;
             width: auto;
-            padding: 0 15px;
-            height: 40px;
+            padding: 0 12px;
+            height: 32px;
             background-color: transparent;
             border: none;
             text-decoration: none;
@@ -97,7 +97,8 @@
 
         .text-button {
             color: #b6b6b6;
-            font: 17px 'Secular One', sans-serif;
+            font: 300 14px 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         /* Animation */
@@ -114,16 +115,29 @@
             position: fixed;
             bottom: 100px;
             left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 185, 37, 0.8);
-            color: rgb(0, 0, 0);
-            padding: 5px 10px;
-            border-radius: 20px;
+            transform: translateX(-50%) translateY(20px);
+            background: linear-gradient(135deg, rgba(66, 51, 117, 0.95), rgba(72, 36, 144, 0.95));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
             z-index: 1000;
-            transition: opacity 0.5s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: none;
-            font-size: 14px;
-            font-weight: bold;
+            font: 300 14px 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 32px rgba(66, 51, 117, 0.3),
+                        0 4px 12px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+        }
+
+        .clipboard-notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
 
         /* Modal styles */
@@ -169,9 +183,16 @@
         }
 
         .speedtest-container {
-            width: 500px;
-            height: 550px;
+            width: 580px;
+            height: 563px;
             margin: 0 auto;
+        }
+
+        .librespeed-container {
+            width: 580px;
+            height: 520px;
+            margin: 0 auto;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -182,23 +203,38 @@
 
     <div class="action-buttons">
         <a href="https://mega.nz/folder/ooFzBKha#VKr9Kdu_s9kMADI6UtB1TA" class="action-button">
-            <img src="mega-logo.png" alt="Mega.nz Logo" />
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <img src="mega-logo2.png" alt="Mega.nz Logo" style="max-height: 16px;" />
+                <span class="text-button">MEGA</span>
+            </div>
         </a>
         <a href="#" class="action-button text-button" id="masButton">MAS</a>
         <a href="#" class="action-button text-button" id="chrisButton">Chris</a>
         <a href="#" class="action-button text-button" id="malwareButton">NOTMALWARE</a>
         <a href="#" class="action-button text-button" id="win11Button">Win11Debloat</a>
+        <a href="https://online.winscript.cc/" class="action-button text-button" target="_blank">WinScript</a>
         <a href="#" class="action-button text-button" id="speedtestButton">SPEEDTEST</a>
+        <a href="#" class="action-button text-button" id="librespeedButton">LIBRESPEED</a>
     </div>
 
-    <div id="notification" class="clipboard-notification">Text copied</div>
+    <div id="notification" class="clipboard-notification">command copied</div>
 
     <!-- Speedtest Modal -->
     <div id="speedtestModal" class="modal">
         <div class="modal-content">
             <button class="close-button" id="closeSpeedtest" style="position:absolute;top:0px;right:0px;z-index:10;">&times;</button>
             <div class="speedtest-container">
-                <iframe src="about:blank" data-src="https://fast.com" width="500px" height="550px" frameborder="0" scrolling="no" style="border:none;border-radius:10px;"></iframe>
+                <iframe src="about:blank" data-src="https://fast.com" width="580px" height="563px" frameborder="0" scrolling="no" style="border:none;border-radius:10px;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- LibreSpeed Modal -->
+    <div id="librespeedModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" id="closeLibrespeed" style="position:absolute;top:0px;right:0px;z-index:10;">&times;</button>
+            <div class="librespeed-container">
+                <iframe src="about:blank" data-src="https://librespeed.org/" width="580px" height="520px" frameborder="0" scrolling="no" style="border:none;border-radius:10px;"></iframe>
             </div>
         </div>
     </div>
@@ -223,14 +259,18 @@
         function showNotification() {
             const notification = document.getElementById('notification');
             notification.style.display = 'block';
-            notification.style.opacity = '1';
+            
+            // Trigger animation
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
 
             // Hide notification after 2 seconds
             setTimeout(() => {
-                notification.style.opacity = '0';
+                notification.classList.remove('show');
                 setTimeout(() => {
                     notification.style.display = 'none';
-                }, 500);
+                }, 400);
             }, 2000);
         }
 
@@ -271,10 +311,29 @@
             speedtestModal.style.display = 'none';
         });
 
-        // Close modal when clicking outside
+        // LibreSpeed modal functionality
+        const librespeedModal = document.getElementById('librespeedModal');
+        const librespeedButton = document.getElementById('librespeedButton');
+        const closeLibrespeed = document.getElementById('closeLibrespeed');
+
+        librespeedButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            const iframe = document.querySelector('#librespeedModal iframe');
+            iframe.src = iframe.getAttribute('data-src');
+            librespeedModal.style.display = 'block';
+        });
+
+        closeLibrespeed.addEventListener('click', function() {
+            librespeedModal.style.display = 'none';
+        });
+
+        // Close modals when clicking outside
         window.addEventListener('click', function(event) {
             if (event.target === speedtestModal) {
                 speedtestModal.style.display = 'none';
+            }
+            if (event.target === librespeedModal) {
+                librespeedModal.style.display = 'none';
             }
         });
 
