@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki - onupirat</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23423375'/><circle cx='50' cy='50' r='25' fill='%23482490'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: rgb(0, 0, 0);
+            --bg-gradient: radial-gradient(circle 850px at 30% -30%, #423375, rgb(6, 6, 6));
+            --text-color: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(182, 182, 182, 0.7);
+            --text-muted-light: rgba(182, 182, 182, 0.5);
+            --btn-bg: rgba(66, 51, 117, 0.2);
+            --btn-border: rgba(66, 51, 117, 0.3);
+            --btn-hover-bg: rgba(66, 51, 117, 0.4);
+            --btn-hover-border: rgba(72, 36, 144, 0.5);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            font: 300 11px 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background: var(--btn-hover-bg);
+            border-color: var(--btn-hover-border);
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(72, 36, 144, 0.3);
+        }
+
+        h1 {
+            font: 300 24px 'Space Grotesk', sans-serif;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .wiki-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wiki-link {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            font: 400 13px Arial, sans-serif;
+            letter-spacing: 0.3px;
+            width: fit-content;
+            max-width: 100%;
+            word-break: break-word;
+        }
+
+        .wiki-link:hover {
+            background: var(--btn-hover-bg);
+            border-color: var(--btn-hover-border);
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(72, 36, 144, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Back</a>
+        <h1>Wiki</h1>
+        <div class="wiki-list">
+            <a href="wiki/Access over LAN a PC with blank password.png" class="wiki-link" target="_blank">Access over LAN a PC with blank password</a>
+            <a href="wiki/Allow Anonymous Access to Shared Folder or Printer on Windows.htm" class="wiki-link">Allow Anonymous Access to Shared Folder or Printer on Windows</a>
+            <a href="wiki/Classic Explorer in Windows 11 plus speed.htm" class="wiki-link">Classic Explorer in Windows 11 plus speed</a>
+            <a href="wiki/Connect Remote Desktop Without a Password in Windows.htm" class="wiki-link">Connect Remote Desktop Without a Password in Windows</a>
+            <a href="wiki/disable log on screen.png" class="wiki-link" target="_blank">Disable log on screen</a>
+            <a href="wiki/Hide Specific User Accounts from Login Screen on Windows 10.htm" class="wiki-link">Hide Specific User Accounts from Login Screen on Windows 10</a>
+            <a href="wiki/How to Add or Remove Lid open action from Power Options in Windows 10.htm" class="wiki-link">How to Add or Remove Lid open action from Power Options in Windows 10</a>
+            <a href="wiki/How to Allow Multiple RDP Sessions on Windows 10 and 11.htm" class="wiki-link">How to Allow Multiple RDP Sessions on Windows 10 and 11</a>
+            <a href="wiki/How to Disable Lock Screen on Windows 10 11.htm" class="wiki-link">How to Disable Lock Screen on Windows 10 11</a>
+            <a href="wiki/How to Enable or Disable the Lock Screen in Windows 10.htm" class="wiki-link">How to Enable or Disable the Lock Screen in Windows 10</a>
+            <a href="wiki/How to Enable Windows Auto Login without a Password.htm" class="wiki-link">How to Enable Windows Auto Login without a Password</a>
+            <a href="wiki/How to Hide or Show User Accounts from Login Screen on Windows.htm" class="wiki-link">How to Hide or Show User Accounts from Login Screen on Windows</a>
+            <a href="wiki/How to Install Only Security Updates on Windows 10.htm" class="wiki-link">How to Install Only Security Updates on Windows 10</a>
+            <a href="wiki/How To View Windows Crash And Error Logs.htm" class="wiki-link">How To View Windows Crash And Error Logs</a>
+            <a href="wiki/RDP ошибка The number of connections to this computer is limited and all connections are in use.htm" class="wiki-link">RDP ошибка The number of connections to this computer is limited and all connections are in use</a>
+            <a href="wiki/Включаем аудит доступа к папкам и файлам в Windows.htm" class="wiki-link">Включаем аудит доступа к папкам и файлам в Windows</a>
+            <a href="wiki/Включить Hyper-V в Windows 10 и 11 (Pro или Home редакции).htm" class="wiki-link">Включить Hyper-V в Windows 10 и 11 (Pro или Home редакции)</a>
+            <a href="wiki/Как включить и настроить Wake-on-LAN (WoL) в Windows.htm" class="wiki-link">Как включить и настроить Wake-on-LAN (WoL) в Windows</a>
+            <a href="wiki/Как отключить Copilot на Windows 11.htm" class="wiki-link">Как отключить Copilot на Windows 11</a>
+            <a href="wiki/Как отключить Secure Boot и UEFI.htm" class="wiki-link">Как отключить Secure Boot и UEFI</a>
+            <a href="wiki/Как полностью удалить OneDrive в Windows 10 и 11 для всех пользователей.htm" class="wiki-link">Как полностью удалить OneDrive в Windows 10 и 11 для всех пользователей</a>
+            <a href="wiki/Разрешить несколько одновременных RDP сеансов в Windows 10 и 11.htm" class="wiki-link">Разрешить несколько одновременных RDP сеансов в Windows 10 и 11</a>
+            <a href="wiki/Убираем экран 'Завершение настройки вашего устройства' в Windows 10 11.htm" class="wiki-link">Убираем экран 'Завершение настройки вашего устройства' в Windows 10 11</a>
+            <a href="wiki/Установка Windows 11 без подключения к Интернету.htm" class="wiki-link">Установка Windows 11 без подключения к Интернету</a>
+        </div>
+    </div>
+</body>
+</html>

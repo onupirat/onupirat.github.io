@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software - onupirat</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23423375'/><circle cx='50' cy='50' r='25' fill='%23482490'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: rgb(0, 0, 0);
+            --bg-gradient: radial-gradient(circle 850px at 30% -30%, #423375, rgb(6, 6, 6));
+            --text-color: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(182, 182, 182, 0.7);
+            --text-muted-light: rgba(182, 182, 182, 0.5);
+            --btn-bg: rgba(66, 51, 117, 0.2);
+            --btn-border: rgba(66, 51, 117, 0.3);
+            --btn-hover-bg: rgba(66, 51, 117, 0.4);
+            --btn-hover-border: rgba(72, 36, 144, 0.5);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            font: 300 11px 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background: var(--btn-hover-bg);
+            border-color: var(--btn-hover-border);
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(72, 36, 144, 0.3);
+        }
+
+        h1 {
+            font: 300 24px 'Space Grotesk', sans-serif;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .file-link {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            font: 400 13px Arial, sans-serif;
+            letter-spacing: 0.3px;
+            width: fit-content;
+        }
+
+        .file-link:hover {
+            background: var(--btn-hover-bg);
+            border-color: var(--btn-hover-border);
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(72, 36, 144, 0.3);
+        }
+
+        .loading {
+            color: var(--text-muted-light);
+            font-size: 12px;
+        }
+
+        .error {
+            color: rgba(255, 100, 100, 0.7);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Back</a>
+        <h1>Software</h1>
+        <div class="file-list" id="fileList">
+            <span class="loading">Loading files...</span>
+        </div>
+    </div>
+
+    <script>
+        // Files from /soft folder
+        const files = [
+            'Consumer_ESU_Enrollment-v0.0.8.zip',
+            'NetDiag.exe',
+            'PowerTools.exe',
+            'Windows_Repair_Toolbox.zip',
+            'Windows10DebloaterV2611.zip',
+            'Windows11DebloaterV206.zip',
+            'WinSlap.exe',
+        ];
+
+        const fileList = document.getElementById('fileList');
+
+        if (files.length === 0) {
+            fileList.innerHTML = '<span class="error">No files added yet</span>';
+        } else {
+            fileList.innerHTML = files.map(file =>
+                `<a href="soft/${file}" class="file-link" download>${file}</a>`
+            ).join('');
+        }
+    </script>
+</body>
+</html>
